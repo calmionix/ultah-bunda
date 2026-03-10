@@ -219,41 +219,39 @@ function createLightConfetti() {
     }
 }
 
-// ============================================
-// TYPING ANIMATION
-// ============================================
+// Deklarasikan variabel interval di luar fungsi agar bisa di-reset
+let typingInterval; 
 
 function startTypingAnimation() {
-
-    const text = "Selamat Ulang Tahun Bunda";
+    const text = "Selamat Ulang Tahun Bunda 🎂";
     const typingText = document.getElementById("typingText");
-
+    
+    // 1. Hentikan interval lama jika masih berjalan (mencegah teks acak)
+    clearInterval(typingInterval);
+    
+    // 2. Kosongkan teks sebelum mulai
     let index = 0;
-    typingText.textContent = ""; // reset text biar tidak dobel
+    typingText.textContent = ""; 
 
     setTimeout(() => {
-
-        const typingInterval = setInterval(() => {
-
+        typingInterval = setInterval(() => {
             if (index < text.length) {
-
-                typingText.textContent += text[index];
+                // 3. Gunakan charAt untuk kompatibilitas browser yang lebih baik
+                typingText.textContent += text.charAt(index);
                 index++;
-
             } else {
-
+                // 4. Bersihkan interval setelah selesai
                 clearInterval(typingInterval);
 
                 // Trigger confetti after typing completes
-                setTimeout(() => {
-                    createConfetti();
-                }, 500);
-
+                if (typeof createConfetti === "function") {
+                    setTimeout(() => {
+                        createConfetti();
+                    }, 500);
+                }
             }
-
-        }, CONFIG.typingSpeed);
-
-    }, CONFIG.typingDelay);
+        }, CONFIG.typingSpeed || 100); // Fallback jika CONFIG tidak terbaca
+    }, CONFIG.typingDelay || 500);
 }
 
 // ============================================
