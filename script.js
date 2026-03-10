@@ -231,7 +231,7 @@ function startTypingAnimation() {
     // Jika sedang proses mengetik, jangan mulai lagi
     if (typingInProgress) return;
     
-    const text = "Selamat Ulang Tahun Bunda 🎂";
+    const text = "Selamat Ulang Tahun Bunda";
     const typingText = document.getElementById("typingText");
     
     // Reset segalanya sebelum mulai
