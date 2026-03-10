@@ -219,29 +219,36 @@ function createLightConfetti() {
     }
 }
 
-// Deklarasikan variabel interval di luar fungsi agar bisa di-reset
-let typingInterval; 
+// ============================================
+// TYPING ANIMATION (FIXED)
+// ============================================
+
+// Taruh variabel ini di luar fungsi untuk kontrol global
+let typingInProgress = false;
+let typingInterval;
 
 function startTypingAnimation() {
+    // Jika sedang proses mengetik, jangan mulai lagi
+    if (typingInProgress) return;
+    
     const text = "Selamat Ulang Tahun Bunda 🎂";
     const typingText = document.getElementById("typingText");
     
-    // 1. Hentikan interval lama jika masih berjalan (mencegah teks acak)
+    // Reset segalanya sebelum mulai
+    typingInProgress = true;
     clearInterval(typingInterval);
-    
-    // 2. Kosongkan teks sebelum mulai
-    let index = 0;
     typingText.textContent = ""; 
+    let index = 0;
 
     setTimeout(() => {
         typingInterval = setInterval(() => {
             if (index < text.length) {
-                // 3. Gunakan charAt untuk kompatibilitas browser yang lebih baik
                 typingText.textContent += text.charAt(index);
                 index++;
             } else {
-                // 4. Bersihkan interval setelah selesai
+                // Selesai mengetik
                 clearInterval(typingInterval);
+                typingInProgress = false; 
 
                 // Trigger confetti after typing completes
                 if (typeof createConfetti === "function") {
@@ -250,7 +257,7 @@ function startTypingAnimation() {
                     }, 500);
                 }
             }
-        }, CONFIG.typingSpeed || 100); // Fallback jika CONFIG tidak terbaca
+        }, CONFIG.typingSpeed || 100);
     }, CONFIG.typingDelay || 500);
 }
 
