@@ -222,74 +222,123 @@ function createLightConfetti() {
 // ============================================
 // TYPING ANIMATION
 // ============================================
+
 function startTypingAnimation() {
-    const text = 'Selamat Ulang Tahun Bunda 🎂';
+
+    const text = "Selamat Ulang Tahun Bunda";
+    const typingText = document.getElementById("typingText");
+
     let index = 0;
+    typingText.textContent = ""; // reset text biar tidak dobel
 
     setTimeout(() => {
+
         const typingInterval = setInterval(() => {
+
             if (index < text.length) {
-                typingText.textContent += text.charAt(index);
+
+                typingText.textContent += text[index];
                 index++;
+
             } else {
+
                 clearInterval(typingInterval);
+
                 // Trigger confetti after typing completes
                 setTimeout(() => {
                     createConfetti();
                 }, 500);
+
             }
+
         }, CONFIG.typingSpeed);
+
     }, CONFIG.typingDelay);
 }
 
 // ============================================
 // MUSIC CONTROL
 // ============================================
+
 function initMusic() {
+
     musicBtn.addEventListener('click', toggleMusic);
-    
+
     // Set volume
     bgMusic.volume = 0.3;
+
+    // Coba autoplay
+    playMusic();
+
+    // Jika autoplay diblokir, mainkan saat user klik dimana saja
+    document.addEventListener("click", autoStartMusic, { once: true });
+}
+
+function autoStartMusic() {
+    if (!isMusicPlaying) {
+        playMusic();
+    }
 }
 
 function playMusic() {
+
     const playPromise = bgMusic.play();
+
     if (playPromise !== undefined) {
+
         playPromise.then(() => {
+
             isMusicPlaying = true;
             updateMusicButton();
+
         }).catch(() => {
-            // Autoplay blocked, wait for user interaction
+
+            // Autoplay diblokir browser
             isMusicPlaying = false;
             updateMusicButton();
+
         });
+
     }
+
 }
 
 function toggleMusic() {
+
     if (isMusicPlaying) {
+
         bgMusic.pause();
         isMusicPlaying = false;
+
     } else {
+
         bgMusic.play();
         isMusicPlaying = true;
+
     }
+
     updateMusicButton();
 }
 
 function updateMusicButton() {
+
     const icon = musicBtn.querySelector('.music-icon');
     const text = musicBtn.querySelector('.music-text');
-    
+
     if (isMusicPlaying) {
+
         icon.textContent = '🎵';
         text.textContent = 'Music On';
         musicBtn.classList.remove('muted');
+
     } else {
+
         icon.textContent = '🔇';
         text.textContent = 'Music Off';
         musicBtn.classList.add('muted');
+
     }
+
 }
 
 // ============================================
