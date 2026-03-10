@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun Bunda ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Particles -->
+    <div class="particles-container" id="particles"></div>
+    
+    <!-- Music Control -->
+    <div class="music-control" id="musicControl">
+        <button class="music-btn" id="musicBtn" aria-label="Toggle Music">
+            <span class="music-icon">🎵</span>
+            <span class="music-text">Music On</span>
+        </button>
+    </div>
+    
+    <!-- Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="music/birthday.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-stars">
+                <span class="star">✨</span>
+                <span class="star">⭐</span>
+                <span class="star">✨</span>
+            </div>
+            <p class="loading-text">Menyiapkan kejutan kecil...</p>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cinematic Title Reveal -->
+    <div class="cinematic-intro" id="cinematicIntro">
+        <div class="cinematic-particles" id="cinematicParticles"></div>
+        <div class="cinematic-light" id="cinematicLight"></div>
+        <div class="cinematic-content">
+            <h1 class="cinematic-title" id="cinematicTitle">Selamat Ulang Tahun Bunda</h1>
+            <h2 class="cinematic-number" id="cinematicNumber">37th</h2>
+            <p class="cinematic-credit" id="cinematicCredit">by Calmionix</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        
+        <!-- Section 1: Ucapan Utama -->
+        <section class="hero-section" id="heroSection">
+            <div class="hero-content">
+                <div class="birthday-cake">🎂</div>
+                <h1 class="main-title">
+                    <span class="typing-text" id="typingText"></span>
+                    <span class="cursor">|</span>
+                </h1>
+                <h2 class="sub-title" id="subTitle">Yang ke 37 Tahun</h2>
+                
+                <div class="message-container" id="messageContainer">
+                    <p class="touching-message">
+                        "Terima kasih sudah selalu ada untukku.<br>
+                        Semoga bunda selalu sehat, bahagia, dan panjang umur.<br>
+                        <span class="love-text">Aku sayang bunda ❤️</span>"
+                    </p>
+                </div>
+                
+                <div class="gift-container" id="giftContainer">
+                    <div class="gift-box" id="giftBox">
+                        <div class="gift-lid">
+                            <div class="gift-bow">🎀</div>
+                        </div>
+                        <div class="gift-body">
+                            <div class="gift-ribbon"></div>
+                        </div>
+                    </div>
+                    <button class="open-gift-btn" id="openGiftBtn">
+                        Buka Hadiah 🎁
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Galeri Foto -->
+        <section class="gallery-section" id="gallerySection">
+            <div class="section-header">
+                <h2 class="section-title">Kenangan Indah Bersama Bunda</h2>
+                <p class="section-subtitle">Setiap momen adalah harta yang tak ternilai</p>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Foto akan di-generate oleh JavaScript -->
+            </div>
+        </section>
+
+        <!-- Section 3: Slideshow Kenangan -->
+        <section class="slideshow-section" id="slideshowSection">
+            <div class="slideshow-container">
+                <div class="slideshow-text">
+                    <span class="heart-icon">❤️</span>
+                    Kenangan indah bersama bunda
+                    <span class="heart-icon">❤️</span>
+                </div>
+                <div class="slideshow-wrapper" id="slideshowWrapper">
+                    <!-- Slideshow images akan di-generate oleh JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Kue Ulang Tahun Interaktif -->
+        <section class="cake-section" id="cakeSection">
+            <div class="cake-container">
+                <h2 class="section-title">Tiup Lilinnya Bunda!</h2>
+                <div class="birthday-cake-display" id="birthdayCake">
+                    <div class="cake-base">
+                        <div class="cake-layer layer-1"></div>
+                        <div class="cake-layer layer-2"></div>
+                        <div class="cake-layer layer-3"></div>
+                        <div class="cake-frosting"></div>
+                    </div>
+                    <div class="candles-container" id="candlesContainer">
+                        <div class="candle">
+                            <div class="flame" id="flame1"></div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame2"></div>
+                            <div class="candle-body"></div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame3"></div>
+                            <div class="candle-body"></div>
+                        </div>
+                    </div>
+                </div>
+                <button class="blow-candle-btn" id="blowCandleBtn">
+                    Tiup Lilin 🎂
+                </button>
+                <p class="candle-message" id="candleMessage">
+                    Semoga semua harapan bunda terkabul.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 5: Kejutan Terakhir -->
+        <section class="final-surprise-section" id="finalSurpriseSection">
+            <div class="final-surprise-content">
+                <button class="final-surprise-btn" id="finalSurpriseBtn">
+                    Kejutan Terakhir 🎁
+                </button>
+                <div class="final-message" id="finalMessage">
+                    <div class="heart-rain" id="heartRain"></div>
+                    <h2 class="final-title">
+                        Terima kasih sudah menjadi<br>
+                        bunda terbaik di dunia ❤️
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p class="footer-text">Dibuat dengan penuh cinta oleh anakmu</p>
+            <div class="footer-hearts">
+                <span>💝</span>
+                <span>💖</span>
+                <span>💗</span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-nav lightbox-prev" id="lightboxPrev">&#10094;</button>
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Foto Kenangan">
+            <div class="lightbox-caption" id="lightboxCaption"></div>
+        </div>
+        <button class="lightbox-nav lightbox-next" id="lightboxNext">&#10095;</button>
+    </div>
+
+    <!-- Confetti Container -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
